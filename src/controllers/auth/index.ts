@@ -4,30 +4,27 @@ import { user } from '../../services'
 import { sign } from './token'
 
 const register = async (req: Request, res: Response) => {
-    const { name, password, email, roleId } = req.body
+    const { name, password, roleId } = req.body
 
-    await user.postUser({ name, password, email, roleId })
+    await user.postUser({ name, password, roleId })
 
     return res.status(201).json({ message: 'Usuário criado com sucesso' })
 }
 
-export const login = async (req: Request, res: Response) => {
-    const { email } = req.body
+const login = async (req: Request, res: Response) => {
+    const { name } = req.body
 
-    const login = await user.getUser({ email })
+    const login = await user.getUser({ name })
 
     if (login) {
-        const token = sign({ 
-            email,
-            name: login.name,
+        const token = sign({
+            name,
             id: login.id,
-            
         })
         
-        const response = { 
-            email,
+        const response = {
             token,
-            name: login.name, 
+            name, 
             role: login.roleId
         }
 

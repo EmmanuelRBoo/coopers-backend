@@ -4,9 +4,9 @@ import { user } from '../../services'
 import { verify } from '../../controllers/auth/token'
 
 const verifyAccountExist = async (req: Request, res: Response, next: NextFunction) => {
-    const { email } = req.body
+    const { name } = req.body
 
-    const verify = await user.getUser({ email })
+    const verify = await user.getUser({ name })
 
     if (verify) {
         const message =  'Usuário já cadastrado'
@@ -18,9 +18,9 @@ const verifyAccountExist = async (req: Request, res: Response, next: NextFunctio
 }
 
 const verifyAccountNotExist = async (req: Request, res: Response, next: NextFunction) => {
-    const { email } = req.body
+    const { name } = req.body
 
-    const verify = await user.getUser({ email })
+    const verify = await user.getUser({ name })
 
     if (!verify) {
         const message = 'Usuário não cadastrado'
@@ -32,9 +32,9 @@ const verifyAccountNotExist = async (req: Request, res: Response, next: NextFunc
 }
 
 const verifyAccountPassword = async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body
+    const { name, password } = req.body
 
-    const verify = await user.getUser({ email })
+    const verify = await user.getUser({ name })
 
     if (verify?.password !== password) {
         const message =  'Senha inválida'
@@ -46,9 +46,9 @@ const verifyAccountPassword = async (req: Request, res: Response, next: NextFunc
 }
 
 const verifyRole = async (req: Request, res: Response, next: NextFunction) => {
-    const { email, roleId } = req.body
+    const { name, roleId } = req.body
 
-    const verify = await user.getUser({ email })
+    const verify = await user.getUser({ name })
 
     if (verify?.roleId != roleId) {
         const message = 'Houve um erro na permissão, você será redirecionado para a tela de login'
@@ -65,7 +65,7 @@ const verifyAuth = async (req: Request, res: Response, next: NextFunction) => {
     const token = verify(String(authorization)) as any
 
     if (token) {
-        const userValidation = await user.getUser({ email: token?.email })
+        const userValidation = await user.getUser({ name: token?.name })
 
         if (!userValidation) {
             const message = 'Você não tem autorização para isso'

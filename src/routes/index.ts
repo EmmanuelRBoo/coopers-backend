@@ -1,5 +1,7 @@
 import authRouter from './auth'
+import taskRouter from './task'
 
 export {
-    authRouter
+    authRouter,
+    taskRouter
 }

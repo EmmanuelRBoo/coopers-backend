@@ -3,12 +3,12 @@ import jwt from 'jsonwebtoken'
 import { IToken } from '../../interfaces'
 import { SECRET } from '../../constants'
 
-export const sign = ({ email, name }: IToken) => {
+export const sign = ({ name }: IToken) => {
     const config = {
         expiresIn: '7d'
     }
 
-    return jwt.sign({ email, name }, SECRET, config)
+    return jwt.sign({ name }, SECRET, config)
 }
 
 export const verify = (token: string) => {

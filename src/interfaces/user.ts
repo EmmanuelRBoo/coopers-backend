@@ -1,11 +1,15 @@
 export interface IGetUser {
-    email: string
+    name: string
 }
 
 export interface IPostUser {
     name: string
-    image?: string
-    email: string 
     password: string
     roleId: number
+}
+
+export interface IPutUser {
+    id: string
+    name: string
+    password: string
 }
