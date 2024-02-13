@@ -6,4 +6,6 @@ const roleRouter = Router()
 
 roleRouter.post('/', role.postRole)
 
+roleRouter.get('/', role.getRole)
+
 export default roleRouter

@@ -10,6 +10,13 @@ const postRole = async (req: Request, res: Response) => {
     return res.status(201).json({ message: 'Role criada com sucesso' })
 }
 
+const getRole = async (req: Request, res: Response) => {
+    const data = await role.getRole()
+
+    return res.status(200).json({ data })
+}
+
 export default {
-    postRole
+    postRole,
+    getRole
 }

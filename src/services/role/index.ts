@@ -1,9 +1,14 @@
 import { db } from '../../db'
 
 const postRole = async (role: string) => {
-    await db.role.create({ data: { role }})
+    return await db.role.create({ data: { role }})
+}
+
+const getRole = async () => {
+    return await db.role.findMany()
 }
 
 export default {
-    postRole
+    postRole,
+    getRole
 }
