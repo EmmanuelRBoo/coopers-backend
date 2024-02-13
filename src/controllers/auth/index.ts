@@ -13,7 +13,9 @@ const register = async (req: Request, res: Response) => {
 
 const login = async (req: Request, res: Response) => {
     const { name } = req.body
-
+    
+    req.headers['access-control-allow-origin'] = "*"
+    
     const login = await user.getUser({ name })
 
     if (login) {
