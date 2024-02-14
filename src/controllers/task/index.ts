@@ -48,9 +48,9 @@ const putTaskStatus = async (req: Request, res: Response) => {
 }
 
 const putTaskOrder = async (req: Request, res: Response) => {
-    const { authorId, data } = req.body
+    const { authorId, data, done } = req.body
 
-    await task.putTaskOrder({ authorId, data })
+    await task.putTaskOrder({ authorId, data, done })
 
     return res.status(200).json()
 }
