@@ -12,8 +12,8 @@ export interface IPostTask {
 }
 
 export interface IPostMassTask {
-    finishedTask: IGetTasks[]
-    tasks: IGetTasks[]
+    finishedTask: IPostTask[]
+    tasks: IPostTask[]
 }
 
 export interface IPutTask {
