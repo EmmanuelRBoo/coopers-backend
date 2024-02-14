@@ -27,7 +27,8 @@ const login = async (req: Request, res: Response) => {
         const response = {
             token,
             name, 
-            role: login.roleId
+            role: login.roleId,
+            id: login.id
         }
 
         return res.status(200).json(response)
