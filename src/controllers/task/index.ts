@@ -60,7 +60,15 @@ const deleteTask = async (req: Request, res: Response) => {
 
     await task.deleteTask({ authorId, done, id })
 
-    return res.status(200).json()
+    return res.status(204).json()
+}
+
+const deleteAllTask = async (req: Request, res: Response) => {
+    const { authorId, done } = req.body
+
+    await task.deleteAllTask({ authorId, done })
+    
+    return res.status(204).json()
 }
 
 export default {

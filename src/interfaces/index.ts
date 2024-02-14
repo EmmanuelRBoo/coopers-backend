@@ -1,6 +1,6 @@
 import { IToken } from './auth'
 import { IGetUser, IPostUser, IPutUser } from './user'
-import { IGetTasks, IPostTask, IPostMassTask, IPutTaskStatus, IPutTaskOrder, IPutTask, IDeleteTask } from './task'
+import { IGetTasks, IPostTask, IPostMassTask, IPutTaskStatus, IPutTaskOrder, IPutTask, IDeleteTask, IDeleteAllTask } from './task'
 
 export {
     IToken,
@@ -13,5 +13,6 @@ export {
     IPutTaskStatus,
     IPutTaskOrder,
     IPutTask,
-    IDeleteTask
+    IDeleteTask,
+    IDeleteAllTask
 }

@@ -42,3 +42,8 @@ export interface IDeleteTask {
     authorId: string
     done: boolean
 }
+
+export interface IDeleteAllTask {
+    authorId: string
+    done: boolean
+}

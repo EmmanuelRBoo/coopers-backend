@@ -1,5 +1,5 @@
 import { db } from '../../db'
-import { IPostTask, IPutTaskStatus, IPutTaskOrder, IPutTask, IDeleteTask, IPostMassTask } from '../../interfaces'
+import { IPostTask, IPutTaskStatus, IPutTaskOrder, IPutTask, IDeleteTask, IPostMassTask, IDeleteAllTask } from '../../interfaces'
 
 const getTasks = async (authorId: string) => {
     return await db.$transaction([
@@ -71,6 +71,14 @@ const deleteTask = async ({ id, authorId, done }: IDeleteTask) => {
     return await db.task.delete({ where: { id, authorId } })
 }
 
+const deleteAllTask = async ({ authorId, done }: IDeleteAllTask) => {
+    if (done) {
+        return await db.finishedTask.deleteMany({ where: { authorId } })
+    }
+
+    return await db.task.deleteMany({ where: { authorId } })
+}
+
 export default {
     getTasks,
     postTask,
@@ -78,5 +86,6 @@ export default {
     putTask,
     putTaskStatus,
     putTaskOrder,
-    deleteTask
+    deleteTask,
+    deleteAllTask
 }
