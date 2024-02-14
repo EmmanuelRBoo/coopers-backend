@@ -20,7 +20,7 @@ const postTask = async (req: Request, res: Response) => {
 
     const data = await task.postTask({ authorId, title, order })
 
-    return res.status(201).json({ data })
+    return res.status(201).json({ id: data.id })
 } 
 
 const postMassTask = async (req: Request, res: Response) => {
