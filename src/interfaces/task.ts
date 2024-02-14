@@ -34,6 +34,7 @@ export interface IPutTaskStatus {
 export interface IPutTaskOrder {
     data: Array<{ id: string, order: number }>
     authorId: string
+    done: boolean
 }
 
 export interface IDeleteTask {

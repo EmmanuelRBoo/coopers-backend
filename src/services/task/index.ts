@@ -47,8 +47,15 @@ const putTaskStatus = async ({ id, authorId, title, done, order }: IPutTaskStatu
     )
 }
 
-const putTaskOrder = async ({ data, authorId }: IPutTaskOrder) => {
+const putTaskOrder = async ({ data, authorId, done }: IPutTaskOrder) => {
     return await db.$transaction(async () => data.map(async ({ id, order }) => {
+        if (done) {
+            return await db.finishedTask.update({
+                where: { id, authorId },
+                data: { order }
+            })
+        }
+        
         return await db.task.update({
             where: { id, authorId },
             data: { order }
