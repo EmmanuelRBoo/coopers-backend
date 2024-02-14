@@ -37,11 +37,11 @@ const putTaskStatus = async ({ id, authorId, title, done, order }: IPutTaskStatu
     return await db.$transaction(
         done
         ? [
-            db.task.create({ data: { title, authorId, order } }),
+            db.task.create({ data: { title, authorId, order, id } }),
             db.finishedTask.delete({ where: { id, authorId } })
         ]
         : [
-            db.finishedTask.create({ data: { title, authorId, order } }),
+            db.finishedTask.create({ data: { title, authorId, order, id } }),
             db.task.delete({ where: { id, authorId } })
         ]
     )
