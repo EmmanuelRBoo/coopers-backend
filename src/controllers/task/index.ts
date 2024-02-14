@@ -18,17 +18,17 @@ const getTasks = async (req: Request, res: Response) => {
 const postTask = async (req: Request, res: Response) => {
     const { authorId, title, order } = req.body
 
-    await task.postTask({ authorId, title, order })
+    const data = await task.postTask({ authorId, title, order })
 
-    return res.status(201).json()
+    return res.status(201).json({ data })
 } 
 
 const postMassTask = async (req: Request, res: Response) => {
     const { finishedTask, tasks } = req.body
 
-    await task.postMassTask({ finishedTask, tasks })
+    const data = await task.postMassTask({ finishedTask, tasks })
 
-    return res.status(201).json()
+    return res.status(201).json({ data })
 }
 
 const putTask = async (req: Request, res: Response) => {
