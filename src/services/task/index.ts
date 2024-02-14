@@ -9,7 +9,7 @@ const getTasks = async (authorId: string) => {
 }
 
 const postTask = async (data: IPostTask) => {
-    return await db.task.create({ data })
+    return await db.task.create({ data, select: { id: true, authorId: true, order: true, title: true } })
 }
 
 const postMassTask = async ({ finishedTask, tasks }: IPostMassTask) => {
