@@ -18,4 +18,6 @@ taskRouter.put('/order', task.putTaskOrder)
 
 taskRouter.delete('/', task.deleteTask)
 
+taskRouter.delete('/all', task.deleteAllTask)
+
 export default taskRouter

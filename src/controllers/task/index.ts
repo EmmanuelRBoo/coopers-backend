@@ -78,5 +78,6 @@ export default {
     putTaskStatus,
     putTaskOrder,
     deleteTask,
-    postMassTask
+    postMassTask,
+    deleteAllTask
 }
